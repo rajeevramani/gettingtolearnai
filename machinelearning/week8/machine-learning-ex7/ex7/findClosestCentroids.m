@@ -20,8 +20,17 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
+n = size(X,1);
 
+for i = 1:n
+    centroid_distance = zeros(K, 1);
+    for j = 1:K
+       centroid_distance(j) = sum((X(i,:) - centroids(j,:)) .^2);
+    end
+    [value,row] = min(min(centroid_distance,[],2));
+    idx(i) = row;
 
+end
 
 
 
